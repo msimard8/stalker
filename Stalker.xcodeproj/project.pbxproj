@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A13BA29227BC9F500E8617F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA28227BC9F500E8617F /* AppDelegate.swift */; };
+		8A13BA2B227BC9F500E8617F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA2A227BC9F500E8617F /* ViewController.swift */; };
+		8A13BA2E227BC9F500E8617F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A13BA2C227BC9F500E8617F /* Main.storyboard */; };
+		8A13BA30227BC9F600E8617F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A13BA2F227BC9F600E8617F /* Assets.xcassets */; };
+		8A13BA33227BC9F600E8617F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A13BA31227BC9F600E8617F /* LaunchScreen.storyboard */; };
+		8A13BA3E227BC9F600E8617F /* StalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA3D227BC9F600E8617F /* StalkerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8A13BA3A227BC9F600E8617F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A13BA1D227BC9F500E8617F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A13BA24227BC9F500E8617F;
+			remoteInfo = Stalker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8A13BA25227BC9F500E8617F /* Stalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A13BA28227BC9F500E8617F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8A13BA2A227BC9F500E8617F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8A13BA2D227BC9F500E8617F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8A13BA2F227BC9F600E8617F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A13BA32227BC9F600E8617F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8A13BA34227BC9F600E8617F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A13BA39227BC9F600E8617F /* StalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A13BA3D227BC9F600E8617F /* StalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StalkerTests.swift; sourceTree = "<group>"; };
+		8A13BA3F227BC9F600E8617F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A13BA22227BC9F500E8617F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A13BA36227BC9F600E8617F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A13BA1C227BC9F500E8617F = {
+			isa = PBXGroup;
+			children = (
+				8A13BA27227BC9F500E8617F /* Stalker */,
+				8A13BA3C227BC9F600E8617F /* StalkerTests */,
+				8A13BA26227BC9F500E8617F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8A13BA26227BC9F500E8617F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A13BA25227BC9F500E8617F /* Stalker.app */,
+				8A13BA39227BC9F600E8617F /* StalkerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A13BA27227BC9F500E8617F /* Stalker */ = {
+			isa = PBXGroup;
+			children = (
+				8A13BA28227BC9F500E8617F /* AppDelegate.swift */,
+				8A13BA2A227BC9F500E8617F /* ViewController.swift */,
+				8A13BA2C227BC9F500E8617F /* Main.storyboard */,
+				8A13BA2F227BC9F600E8617F /* Assets.xcassets */,
+				8A13BA31227BC9F600E8617F /* LaunchScreen.storyboard */,
+				8A13BA34227BC9F600E8617F /* Info.plist */,
+			);
+			path = Stalker;
+			sourceTree = "<group>";
+		};
+		8A13BA3C227BC9F600E8617F /* StalkerTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A13BA3D227BC9F600E8617F /* StalkerTests.swift */,
+				8A13BA3F227BC9F600E8617F /* Info.plist */,
+			);
+			path = StalkerTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A13BA24227BC9F500E8617F /* Stalker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A13BA42227BC9F600E8617F /* Build configuration list for PBXNativeTarget "Stalker" */;
+			buildPhases = (
+				8A13BA21227BC9F500E8617F /* Sources */,
+				8A13BA22227BC9F500E8617F /* Frameworks */,
+				8A13BA23227BC9F500E8617F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stalker;
+			productName = Stalker;
+			productReference = 8A13BA25227BC9F500E8617F /* Stalker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8A13BA38227BC9F600E8617F /* StalkerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A13BA45227BC9F600E8617F /* Build configuration list for PBXNativeTarget "StalkerTests" */;
+			buildPhases = (
+				8A13BA35227BC9F600E8617F /* Sources */,
+				8A13BA36227BC9F600E8617F /* Frameworks */,
+				8A13BA37227BC9F600E8617F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A13BA3B227BC9F600E8617F /* PBXTargetDependency */,
+			);
+			name = StalkerTests;
+			productName = StalkerTests;
+			productReference = 8A13BA39227BC9F600E8617F /* StalkerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A13BA1D227BC9F500E8617F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Michael Simard";
+				TargetAttributes = {
+					8A13BA24227BC9F500E8617F = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					8A13BA38227BC9F600E8617F = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 8A13BA24227BC9F500E8617F;
+					};
+				};
+			};
+			buildConfigurationList = 8A13BA20227BC9F500E8617F /* Build configuration list for PBXProject "Stalker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8A13BA1C227BC9F500E8617F;
+			productRefGroup = 8A13BA26227BC9F500E8617F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A13BA24227BC9F500E8617F /* Stalker */,
+				8A13BA38227BC9F600E8617F /* StalkerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A13BA23227BC9F500E8617F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A13BA33227BC9F600E8617F /* LaunchScreen.storyboard in Resources */,
+				8A13BA30227BC9F600E8617F /* Assets.xcassets in Resources */,
+				8A13BA2E227BC9F500E8617F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A13BA37227BC9F600E8617F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A13BA21227BC9F500E8617F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A13BA2B227BC9F500E8617F /* ViewController.swift in Sources */,
+				8A13BA29227BC9F500E8617F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A13BA35227BC9F600E8617F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A13BA3E227BC9F600E8617F /* StalkerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A13BA3B227BC9F600E8617F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A13BA24227BC9F500E8617F /* Stalker */;
+			targetProxy = 8A13BA3A227BC9F600E8617F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8A13BA2C227BC9F500E8617F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A13BA2D227BC9F500E8617F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8A13BA31227BC9F600E8617F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A13BA32227BC9F600E8617F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8A13BA40227BC9F600E8617F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8A13BA41227BC9F600E8617F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8A13BA43227BC9F600E8617F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3355T75KAW;
+				INFOPLIST_FILE = Stalker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.michaelsimard.Stalker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8A13BA44227BC9F600E8617F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3355T75KAW;
+				INFOPLIST_FILE = Stalker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.michaelsimard.Stalker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8A13BA46227BC9F600E8617F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3355T75KAW;
+				INFOPLIST_FILE = StalkerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.michaelsimard.StalkerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stalker.app/Stalker";
+			};
+			name = Debug;
+		};
+		8A13BA47227BC9F600E8617F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3355T75KAW;
+				INFOPLIST_FILE = StalkerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.michaelsimard.StalkerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stalker.app/Stalker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A13BA20227BC9F500E8617F /* Build configuration list for PBXProject "Stalker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A13BA40227BC9F600E8617F /* Debug */,
+				8A13BA41227BC9F600E8617F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A13BA42227BC9F600E8617F /* Build configuration list for PBXNativeTarget "Stalker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A13BA43227BC9F600E8617F /* Debug */,
+				8A13BA44227BC9F600E8617F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A13BA45227BC9F600E8617F /* Build configuration list for PBXNativeTarget "StalkerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A13BA46227BC9F600E8617F /* Debug */,
+				8A13BA47227BC9F600E8617F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8A13BA1D227BC9F500E8617F /* Project object */;
+}
