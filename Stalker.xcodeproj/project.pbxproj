@@ -9,12 +9,22 @@
 /* Begin PBXBuildFile section */
 		297EF0A5348622044257902E /* Pods_StalkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F9707D38B4F0AF0F63BAFB /* Pods_StalkerTests.framework */; };
 		8A13BA29227BC9F500E8617F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA28227BC9F500E8617F /* AppDelegate.swift */; };
-		8A13BA2B227BC9F500E8617F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA2A227BC9F500E8617F /* ViewController.swift */; };
 		8A13BA2E227BC9F500E8617F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A13BA2C227BC9F500E8617F /* Main.storyboard */; };
 		8A13BA30227BC9F600E8617F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A13BA2F227BC9F600E8617F /* Assets.xcassets */; };
 		8A13BA33227BC9F600E8617F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A13BA31227BC9F600E8617F /* LaunchScreen.storyboard */; };
 		8A13BA3E227BC9F600E8617F /* StalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA3D227BC9F600E8617F /* StalkerTests.swift */; };
 		8A13BA49227BCB1000E8617F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8A13BA48227BCB1000E8617F /* Podfile */; };
+		8A13BA4B227BD02C00E8617F /* StalkerNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA4A227BD02C00E8617F /* StalkerNetworkService.swift */; };
+		8A13BA4D227BDA3E00E8617F /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA4C227BDA3E00E8617F /* NewsArticle.swift */; };
+		8A13BA50227BDA9400E8617F /* NewsArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA4F227BDA9400E8617F /* NewsArticles.swift */; };
+		8A13BA53227BE05B00E8617F /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13BA51227BE05B00E8617F /* ArticleListViewController.swift */; };
+		8A13BA54227BE05B00E8617F /* ArticleListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A13BA52227BE05B00E8617F /* ArticleListViewController.xib */; };
+		8A3318A1227DFFC400920A97 /* ArticleListLoadMoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3318A0227DFFC400920A97 /* ArticleListLoadMoreFooterView.swift */; };
+		8A3318A3227DFFDC00920A97 /* ArticleListLoadMoreFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3318A2227DFFDC00920A97 /* ArticleListLoadMoreFooterView.xib */; };
+		8A3318A6227E024300920A97 /* ArticleListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3318A4227E024300920A97 /* ArticleListTableViewCell.swift */; };
+		8A3318A7227E024300920A97 /* ArticleListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3318A5227E024300920A97 /* ArticleListTableViewCell.xib */; };
+		8A3318AA227E026200920A97 /* ArticleListLoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3318A8227E026200920A97 /* ArticleListLoadMoreTableViewCell.swift */; };
+		8A3318AB227E026200920A97 /* ArticleListLoadMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3318A9227E026200920A97 /* ArticleListLoadMoreTableViewCell.xib */; };
 		FABD8215D44E75BBFEF45746 /* Pods_Stalker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE188CF8EEA339DFF66B148C /* Pods_Stalker.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +43,6 @@
 		362D0F921979425C164B3263 /* Pods-StalkerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StalkerTests.debug.xcconfig"; path = "Target Support Files/Pods-StalkerTests/Pods-StalkerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A13BA25227BC9F500E8617F /* Stalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A13BA28227BC9F500E8617F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A13BA2A227BC9F500E8617F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8A13BA2D227BC9F500E8617F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A13BA2F227BC9F600E8617F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A13BA32227BC9F600E8617F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -41,7 +50,18 @@
 		8A13BA39227BC9F600E8617F /* StalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A13BA3D227BC9F600E8617F /* StalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StalkerTests.swift; sourceTree = "<group>"; };
 		8A13BA3F227BC9F600E8617F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A13BA48227BCB1000E8617F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		8A13BA48227BCB1000E8617F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8A13BA4A227BD02C00E8617F /* StalkerNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StalkerNetworkService.swift; sourceTree = "<group>"; };
+		8A13BA4C227BDA3E00E8617F /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
+		8A13BA4F227BDA9400E8617F /* NewsArticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticles.swift; sourceTree = "<group>"; };
+		8A13BA51227BE05B00E8617F /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
+		8A13BA52227BE05B00E8617F /* ArticleListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListViewController.xib; sourceTree = "<group>"; };
+		8A3318A0227DFFC400920A97 /* ArticleListLoadMoreFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListLoadMoreFooterView.swift; sourceTree = "<group>"; };
+		8A3318A2227DFFDC00920A97 /* ArticleListLoadMoreFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListLoadMoreFooterView.xib; sourceTree = "<group>"; };
+		8A3318A4227E024300920A97 /* ArticleListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListTableViewCell.swift; sourceTree = "<group>"; };
+		8A3318A5227E024300920A97 /* ArticleListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListTableViewCell.xib; sourceTree = "<group>"; };
+		8A3318A8227E026200920A97 /* ArticleListLoadMoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListLoadMoreTableViewCell.swift; sourceTree = "<group>"; };
+		8A3318A9227E026200920A97 /* ArticleListLoadMoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListLoadMoreTableViewCell.xib; sourceTree = "<group>"; };
 		90060655A2CA5F077DA24990 /* Pods-StalkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StalkerTests.release.xcconfig"; path = "Target Support Files/Pods-StalkerTests/Pods-StalkerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8927EC455C26543E0124AC3 /* Pods-Stalker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stalker.debug.xcconfig"; path = "Target Support Files/Pods-Stalker/Pods-Stalker.debug.xcconfig"; sourceTree = "<group>"; };
 		AE188CF8EEA339DFF66B148C /* Pods_Stalker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stalker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,13 +111,22 @@
 		8A13BA27227BC9F500E8617F /* Stalker */ = {
 			isa = PBXGroup;
 			children = (
+				8A13BA4E227BDA4700E8617F /* Models */,
 				8A13BA28227BC9F500E8617F /* AppDelegate.swift */,
-				8A13BA2A227BC9F500E8617F /* ViewController.swift */,
+				8A13BA4A227BD02C00E8617F /* StalkerNetworkService.swift */,
 				8A13BA2C227BC9F500E8617F /* Main.storyboard */,
 				8A13BA2F227BC9F600E8617F /* Assets.xcassets */,
 				8A13BA31227BC9F600E8617F /* LaunchScreen.storyboard */,
 				8A13BA34227BC9F600E8617F /* Info.plist */,
 				8A13BA48227BCB1000E8617F /* Podfile */,
+				8A13BA51227BE05B00E8617F /* ArticleListViewController.swift */,
+				8A13BA52227BE05B00E8617F /* ArticleListViewController.xib */,
+				8A3318A0227DFFC400920A97 /* ArticleListLoadMoreFooterView.swift */,
+				8A3318A2227DFFDC00920A97 /* ArticleListLoadMoreFooterView.xib */,
+				8A3318A4227E024300920A97 /* ArticleListTableViewCell.swift */,
+				8A3318A5227E024300920A97 /* ArticleListTableViewCell.xib */,
+				8A3318A8227E026200920A97 /* ArticleListLoadMoreTableViewCell.swift */,
+				8A3318A9227E026200920A97 /* ArticleListLoadMoreTableViewCell.xib */,
 			);
 			path = Stalker;
 			sourceTree = "<group>";
@@ -109,6 +138,15 @@
 				8A13BA3F227BC9F600E8617F /* Info.plist */,
 			);
 			path = StalkerTests;
+			sourceTree = "<group>";
+		};
+		8A13BA4E227BDA4700E8617F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A13BA4C227BDA3E00E8617F /* NewsArticle.swift */,
+				8A13BA4F227BDA9400E8617F /* NewsArticles.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D01334324C4E1CD3B13B7D09 /* Frameworks */ = {
@@ -128,7 +166,6 @@
 				362D0F921979425C164B3263 /* Pods-StalkerTests.debug.xcconfig */,
 				90060655A2CA5F077DA24990 /* Pods-StalkerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -217,8 +254,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A13BA33227BC9F600E8617F /* LaunchScreen.storyboard in Resources */,
+				8A3318A7227E024300920A97 /* ArticleListTableViewCell.xib in Resources */,
+				8A3318A3227DFFDC00920A97 /* ArticleListLoadMoreFooterView.xib in Resources */,
+				8A3318AB227E026200920A97 /* ArticleListLoadMoreTableViewCell.xib in Resources */,
 				8A13BA30227BC9F600E8617F /* Assets.xcassets in Resources */,
 				8A13BA49227BCB1000E8617F /* Podfile in Resources */,
+				8A13BA54227BE05B00E8617F /* ArticleListViewController.xib in Resources */,
 				8A13BA2E227BC9F500E8617F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,8 +347,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A13BA2B227BC9F500E8617F /* ViewController.swift in Sources */,
+				8A13BA50227BDA9400E8617F /* NewsArticles.swift in Sources */,
+				8A3318A1227DFFC400920A97 /* ArticleListLoadMoreFooterView.swift in Sources */,
+				8A13BA4D227BDA3E00E8617F /* NewsArticle.swift in Sources */,
+				8A13BA53227BE05B00E8617F /* ArticleListViewController.swift in Sources */,
+				8A13BA4B227BD02C00E8617F /* StalkerNetworkService.swift in Sources */,
 				8A13BA29227BC9F500E8617F /* AppDelegate.swift in Sources */,
+				8A3318A6227E024300920A97 /* ArticleListTableViewCell.swift in Sources */,
+				8A3318AA227E026200920A97 /* ArticleListLoadMoreTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
