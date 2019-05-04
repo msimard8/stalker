@@ -8,6 +8,10 @@
 
 import UIKit
 
-class NewsArticle: NSObject {
-
+struct NewsArticle {
+    var title:String?
 }
+
+//class NewsArticle: NSObject {
+//
+//}
