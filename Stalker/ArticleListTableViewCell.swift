@@ -10,6 +10,8 @@ import UIKit
 
 class ArticleListTableViewCell: UITableViewCell {
 
+    static let identifier = "ArticleListTableViewCell"
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var sourceLabel: UILabel!
