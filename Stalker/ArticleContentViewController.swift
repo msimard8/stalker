@@ -9,7 +9,21 @@
 import UIKit
 
 class ArticleContentViewController: UIViewController {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var contentTextView: UITextView!
+    
+    var newsArticle:NewsArticle? = nil {
+        didSet {
+            titleLabel.text = newsArticle?.title ?? ""
+            sourceLabel.text = newsArticle?.source ?? ""
+            authorLabel.text = newsArticle?.source ?? ""
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
