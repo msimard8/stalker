@@ -10,8 +10,11 @@ import UIKit
 
 class ArticleListViewController: UIViewController {
     
+    let cellHeight:CGFloat = 150
     let maxArticleCount = 100 //(This is set by newsapi.org for dev accounts)
     let searchSubject = "The Night King"
+    
+    let thumbnailCache = NSCache<NSString, UIImage>()
     
     let stalkerNetworkService = StalkerNetworkService()
     @IBOutlet var tableView: UITableView!
@@ -21,14 +24,22 @@ class ArticleListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.estimatedRowHeight = 110
-        self.reload(page:lastPage + 1)
+        self.tableView.estimatedRowHeight = cellHeight
         let refreshControl = UIRefreshControl()
         //  refreshControl.addTarget(self, action: #selector(reload), for: UIControl.Event.valueChanged)
         self.tableView.refreshControl = refreshControl
         self.tableView.register(UINib(nibName: "ArticleListLoadMoreTableViewCell", bundle: nil), forCellReuseIdentifier: "load-more-cell")
         self.tableView.register(UINib(nibName: "ArticleListTableViewCell", bundle: nil), forCellReuseIdentifier: "article-cell")
-        self.title = searchSubject
+        self.tableView.register(UINib(nibName: "ArticleListTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "header")
+        self.title = "Stalker"
+        thumbnailCache.countLimit = maxArticleCount
+        
+        self.reload(page:lastPage + 1)
+
+    }
+    
+    override func didReceiveMemoryWarning() {
+        thumbnailCache.removeAllObjects()
     }
     
     @objc func reload(page:Int){
@@ -115,11 +126,26 @@ extension ArticleListViewController: UITableViewDataSource {
         }
     }
     
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        if let headerView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? ArticleListTableViewHeaderView {
+//     //   headerView.titleLabel.text = searchSubject
+//        return headerView
+//        }
+//        return nil;
+//    }
+//
+    
     private func downloadImage( urlString:String, indexPath:IndexPath){
         stalkerNetworkService.fetchThumbnailImage(urlString: urlString) { (image, error) in
             DispatchQueue.main.async {
-                if self.tableView.indexPathsForVisibleRows?.contains(indexPath) ?? false {
+            //    if self.tableView.indexPathsForVisibleRows?.contains(indexPath) ?? false {
                     if let thumbnailImage = image {
+                        self.thumbnailCache.setObject(thumbnailImage, forKey: urlString as NSString)
+
+//                        if (self.tableView.headerView(forSection: 0)?.contentView as? ArticleListHeaderView)?.backgroundImageView.image == nil {
+//                            (self.tableView.headerView(forSection: 0)?.contentView as? ArticleListHeaderView)?.backgroundImageView.image = image
+//                        }
+                        
                         (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.image = thumbnailImage
                         (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.backgroundColor = .clear
                     }
@@ -129,7 +155,7 @@ extension ArticleListViewController: UITableViewDataSource {
                         
                     }
                 }
-            }
+           // }
             
         }
     }
@@ -138,22 +164,29 @@ extension ArticleListViewController: UITableViewDataSource {
 extension ArticleListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return cellHeight
     }
 
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100
+    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let articleCell = cell as? ArticleListTableViewCell {
             
             if let urlImage = articleCell.newsArticle?.urlToImage {
                 articleCell.thumbnailImageView.backgroundColor = .lightGray
-                downloadImage(urlString: urlImage, indexPath: indexPath)
+                if let cachedImage = thumbnailCache.object(forKey: urlImage as NSString){
+                    articleCell.thumbnailImageView.image = cachedImage
+                }
+                else {
+                    downloadImage(urlString: urlImage, indexPath: indexPath)
+                }
             }
         
             
         }
         if let _ = cell as? ArticleListLoadMoreTableViewCell {
-
             DispatchQueue.main.asyncAfter(deadline: .now() ) {
                 self.reload(page: self.lastPage + 1)
 
