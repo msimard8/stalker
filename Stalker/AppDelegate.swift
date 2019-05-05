@@ -19,8 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         let articleListViewController = ArticleListViewController()
-        articleListViewController.view.backgroundColor = UIColor.red
-        window!.rootViewController = articleListViewController
+        articleListViewController.view.backgroundColor = UIColor.lightText
+        
+        let naviationController = UINavigationController(rootViewController: articleListViewController)
+        
+        window!.rootViewController = naviationController
         window!.makeKeyAndVisible()
         return true
     }
