@@ -10,6 +10,7 @@ import UIKit
 
 class ArticleListLoadMoreTableViewCell: UITableViewCell {
 
+    static let identifier = "ArticleListLoadMoreTableViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
