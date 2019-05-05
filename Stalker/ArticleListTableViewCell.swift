@@ -8,15 +8,30 @@
 
 import UIKit
 
+protocol ArticleListTableViewCellDelegate:class {
+    func showMoreInfoButtonTapped(articleListTableViewCell:ArticleListTableViewCell)
+}
 class ArticleListTableViewCell: UITableViewCell {
 
-    static let identifier = "ArticleListTableViewCell"
-
+   static let identifier = "ArticleListTableViewCell"
+   weak var delegate:ArticleListTableViewCellDelegate?
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var expanded:Bool = false  {
+        didSet{
+            if expanded {
+                self.descriptionLabel.text = newsArticle?.articleDescription ?? ""
+            }
+            else {
+                self.descriptionLabel.text = ""
+            }
+        }
+    }
     var newsArticle:NewsArticle? {
         didSet{
             self.backgroundColor = .white
@@ -25,8 +40,6 @@ class ArticleListTableViewCell: UITableViewCell {
             titleLabel.text = newsArticle?.title ?? "No title"
             self.sourceLabel.text = newsArticle?.source ?? ""
             self.dateLabel.text = UTCToLocal(date:   newsArticle?.publishedAt ?? "")
-            
-
         }
     }
     override func awakeFromNib() {
@@ -39,6 +52,10 @@ class ArticleListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func showMoreInfoButtonTapped(_ sender: Any) {
+        delegate?.showMoreInfoButtonTapped(articleListTableViewCell: self)
+        
+    }
     
     func UTCToLocal(date:String) -> String {
         let dateFormatter = DateFormatter()
