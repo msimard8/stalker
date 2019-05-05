@@ -1,14 +1,14 @@
 //
-//  ArticleListTableViewHeaderView.swift
+//  ArticleContentHeaderView.swift
 //  Stalker
 //
-//  Created by Michael Simard on 5/4/19.
+//  Created by Michael Simard on 5/5/19.
 //  Copyright © 2019 Michael Simard. All rights reserved.
 //
 
 import UIKit
 
-class ArticleListTableViewHeaderView: UITableViewHeaderFooterView {
+class ArticleContentHeaderView: UITableViewHeaderFooterView {
 
     /*
     // Only override draw() if you perform custom drawing.
