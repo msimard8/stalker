@@ -10,6 +10,9 @@ import UIKit
 
 struct NewsArticle {
     var title:String?
+    var urlToImage:String?
+    var source:String?
+    var publishedAt:String?
 }
 
 //class NewsArticle: NSObject {
