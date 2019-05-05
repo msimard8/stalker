@@ -56,7 +56,10 @@ class StalkerNetworkService: NSObject {
                     title: articleJSON["title"] as? String,
                     urlToImage: articleJSON["urlToImage"] as? String,
                     source: (articleJSON["source"] as? [String:Any])?["name"] as? String,
-                    publishedAt: articleJSON["publishedAt"] as? String
+                    articleDescription: articleJSON["description"] as? String,
+                    publishedAt: articleJSON["publishedAt"] as? String,
+                    author: articleJSON["author"] as? String,
+                    content: articleJSON["content"] as? String
 
                     ))
             }
