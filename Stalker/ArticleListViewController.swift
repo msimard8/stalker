@@ -11,8 +11,10 @@ import UIKit
 class ArticleListViewController: UIViewController {
     
     let cellHeight:CGFloat = 150
+    let headerHeight:CGFloat = 200
+
     let maxArticleCount = 100 //(This is set by newsapi.org for dev accounts)
-    let searchSubject = "The Night King"
+    let searchSubject = "Yzerman"
     
     let thumbnailCache = NSCache<NSString, UIImage>()
     
@@ -28,10 +30,10 @@ class ArticleListViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         //  refreshControl.addTarget(self, action: #selector(reload), for: UIControl.Event.valueChanged)
         self.tableView.refreshControl = refreshControl
-        self.tableView.register(UINib(nibName: "ArticleListLoadMoreTableViewCell", bundle: nil), forCellReuseIdentifier: "load-more-cell")
-        self.tableView.register(UINib(nibName: "ArticleListTableViewCell", bundle: nil), forCellReuseIdentifier: "article-cell")
-        self.tableView.register(UINib(nibName: "ArticleListTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "header")
-        self.title = "Stalker"
+        self.tableView.register(UINib(nibName: "ArticleListLoadMoreTableViewCell", bundle: nil), forCellReuseIdentifier: ArticleListLoadMoreTableViewCell.identifier)
+        self.tableView.register(UINib(nibName: "ArticleListTableViewCell", bundle: nil), forCellReuseIdentifier: ArticleListTableViewCell.identifier)
+        self.tableView.register(UINib(nibName: "ArticleListHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: ArticleListHeaderView.identifier)
+        self.title = searchSubject
         thumbnailCache.countLimit = maxArticleCount
         
         self.reload(page:lastPage + 1)
@@ -111,28 +113,29 @@ extension ArticleListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == articles.count) {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "load-more-cell") else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleListLoadMoreTableViewCell.identifier) else {
                 return UITableViewCell()
             }
             return cell
         }
         else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "article-cell") as? ArticleListTableViewCell else{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleListTableViewCell.identifier) as? ArticleListTableViewCell else{
                 return UITableViewCell()
             }
             let article =  articles[indexPath.row]
             cell.newsArticle = article
+            cell.selectionStyle = .none
             return cell
         }
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if let headerView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? ArticleListTableViewHeaderView {
-//     //   headerView.titleLabel.text = searchSubject
-//        return headerView
-//        }
-//        return nil;
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let headerView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: ArticleListHeaderView.identifier) as? ArticleListHeaderView {
+            headerView.titleLabel.text = ("  \(searchSubject)  ")
+         return headerView
+        }
+        return nil;
+    }
 //
     
     private func downloadImage( urlString:String, indexPath:IndexPath){
@@ -142,9 +145,9 @@ extension ArticleListViewController: UITableViewDataSource {
                     if let thumbnailImage = image {
                         self.thumbnailCache.setObject(thumbnailImage, forKey: urlString as NSString)
 
-//                        if (self.tableView.headerView(forSection: 0)?.contentView as? ArticleListHeaderView)?.backgroundImageView.image == nil {
-//                            (self.tableView.headerView(forSection: 0)?.contentView as? ArticleListHeaderView)?.backgroundImageView.image = image
-//                        }
+                        if (self.tableView.headerView(forSection: 0) as? ArticleListHeaderView)?.backgroundImageView.image == nil {
+                            (self.tableView.headerView(forSection: 0) as? ArticleListHeaderView)?.backgroundImageView.image = image
+                        }
                         
                         (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.image = thumbnailImage
                         (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.backgroundColor = .clear
@@ -168,7 +171,7 @@ extension ArticleListViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return headerHeight
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -191,6 +194,19 @@ extension ArticleListViewController: UITableViewDelegate {
                 self.reload(page: self.lastPage + 1)
 
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let articleContentViewController = ArticleContentViewController()
+        articleContentViewController.loadView()
+        articleContentViewController.newsArticle = articles[indexPath.row]
+        
+        if let imageURL = articles[indexPath.row].urlToImage {
+        articleContentViewController.imageView.image = thumbnailCache.object(forKey:imageURL as NSString)
+        }
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(articleContentViewController, animated: true)
         }
     }
 }
