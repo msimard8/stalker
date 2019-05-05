@@ -1,5 +1,5 @@
 //
-//  ArticleListLoadMoreFooterView.swift
+//  ArticleListTableViewHeaderView.swift
 //  Stalker
 //
 //  Created by Michael Simard on 5/4/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleListLoadMoreFooterView: UIView {
+class ArticleListTableViewHeaderView: UITableViewHeaderFooterView {
 
     /*
     // Only override draw() if you perform custom drawing.
