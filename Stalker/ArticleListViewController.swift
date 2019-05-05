@@ -11,8 +11,10 @@ import UIKit
 class ArticleListViewController: UIViewController {
     
     let cellHeight:CGFloat = 150
+    let cellExpandedHeight:CGFloat = 200
+    var expandedIndexPaths:[IndexPath] = []
     let headerHeight:CGFloat = 200
-
+    
     let maxArticleCount = 100 //(This is set by newsapi.org for dev accounts)
     let searchSubject = "Yzerman"
     
@@ -27,6 +29,7 @@ class ArticleListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = cellHeight
+        self.tableView.rowHeight = UITableView.automaticDimension
         let refreshControl = UIRefreshControl()
         //  refreshControl.addTarget(self, action: #selector(reload), for: UIControl.Event.valueChanged)
         self.tableView.refreshControl = refreshControl
@@ -37,7 +40,7 @@ class ArticleListViewController: UIViewController {
         thumbnailCache.countLimit = maxArticleCount
         
         self.reload(page:lastPage + 1)
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,8 +54,8 @@ class ArticleListViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.tableView.refreshControl?.endRefreshing()
                     let previousArticlesCount = self.articles.count
-                     self.articles = self.articles + articles
-                  
+                    self.articles = self.articles + articles
+                    
                     //only reload new articles for smoothness
                     
                     var newIndexPaths:[IndexPath] = []
@@ -70,9 +73,9 @@ class ArticleListViewController: UIViewController {
                         newIndexPaths.removeLast() //no more articles, no need to show the load more cell
                     }
                     
-                  
+                    
                     self.tableView.insertRows(at: newIndexPaths, with: .fade)
- 
+                    
                     
                     
                     self.lastPage += 1;
@@ -125,6 +128,7 @@ extension ArticleListViewController: UITableViewDataSource {
             let article =  articles[indexPath.row]
             cell.newsArticle = article
             cell.selectionStyle = .none
+            cell.expanded = self.expandedIndexPaths.contains(indexPath)
             return cell
         }
     }
@@ -132,33 +136,33 @@ extension ArticleListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: ArticleListHeaderView.identifier) as? ArticleListHeaderView {
             headerView.titleLabel.text = ("  \(searchSubject)  ")
-         return headerView
+            return headerView
         }
         return nil;
     }
-//
+    //
     
     private func downloadImage( urlString:String, indexPath:IndexPath){
         stalkerNetworkService.fetchThumbnailImage(urlString: urlString) { (image, error) in
             DispatchQueue.main.async {
-            //    if self.tableView.indexPathsForVisibleRows?.contains(indexPath) ?? false {
-                    if let thumbnailImage = image {
-                        self.thumbnailCache.setObject(thumbnailImage, forKey: urlString as NSString)
-
-                        if (self.tableView.headerView(forSection: 0) as? ArticleListHeaderView)?.backgroundImageView.image == nil {
-                            (self.tableView.headerView(forSection: 0) as? ArticleListHeaderView)?.backgroundImageView.image = image
-                        }
-                        
-                        (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.image = thumbnailImage
-                        (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.backgroundColor = .clear
+                //    if self.tableView.indexPathsForVisibleRows?.contains(indexPath) ?? false {
+                if let thumbnailImage = image {
+                    self.thumbnailCache.setObject(thumbnailImage, forKey: urlString as NSString)
+                    
+                    if (self.tableView.headerView(forSection: 0) as? ArticleListHeaderView)?.backgroundImageView.image == nil {
+                        (self.tableView.headerView(forSection: 0) as? ArticleListHeaderView)?.backgroundImageView.image = image
                     }
-                    else {
-                        (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.image = nil
-                        (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.backgroundColor = .red
-                        
-                    }
+                    
+                    (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.image = thumbnailImage
+                    (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.backgroundColor = .clear
                 }
-           // }
+                else {
+                    (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.image = nil
+                    (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.backgroundColor = .red
+                    
+                }
+            }
+            // }
             
         }
     }
@@ -166,17 +170,17 @@ extension ArticleListViewController: UITableViewDataSource {
 
 extension ArticleListViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeight
-    }
-
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return cellHeight
+    //    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return headerHeight
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let articleCell = cell as? ArticleListTableViewCell {
-            
+            articleCell.delegate  = self
             if let urlImage = articleCell.newsArticle?.urlToImage {
                 articleCell.thumbnailImageView.backgroundColor = .lightGray
                 if let cachedImage = thumbnailCache.object(forKey: urlImage as NSString){
@@ -186,13 +190,13 @@ extension ArticleListViewController: UITableViewDelegate {
                     downloadImage(urlString: urlImage, indexPath: indexPath)
                 }
             }
-        
+            
             
         }
         if let _ = cell as? ArticleListLoadMoreTableViewCell {
             DispatchQueue.main.asyncAfter(deadline: .now() ) {
                 self.reload(page: self.lastPage + 1)
-
+                
             }
         }
     }
@@ -203,10 +207,27 @@ extension ArticleListViewController: UITableViewDelegate {
         articleContentViewController.newsArticle = articles[indexPath.row]
         
         if let imageURL = articles[indexPath.row].urlToImage {
-        articleContentViewController.imageView.image = thumbnailCache.object(forKey:imageURL as NSString)
+            articleContentViewController.imageView.image = thumbnailCache.object(forKey:imageURL as NSString)
         }
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(articleContentViewController, animated: true)
         }
     }
+}
+
+extension ArticleListViewController: ArticleListTableViewCellDelegate{
+    func showMoreInfoButtonTapped(articleListTableViewCell: ArticleListTableViewCell) {
+            DispatchQueue.main.async {
+                if let indexPath = self.tableView.indexPath(for: articleListTableViewCell){
+                    articleListTableViewCell.expanded = !articleListTableViewCell.expanded
+                    if articleListTableViewCell.expanded {
+                        self.expandedIndexPaths.append(indexPath)
+                    }
+                    else {
+                        self.expandedIndexPaths = self.expandedIndexPaths.filter{$0 != indexPath}
+                    }
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }
 }
