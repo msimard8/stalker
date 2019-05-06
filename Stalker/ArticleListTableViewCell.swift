@@ -16,6 +16,7 @@ class ArticleListTableViewCell: UITableViewCell {
    static let identifier = "ArticleListTableViewCell"
    weak var delegate:ArticleListTableViewCellDelegate?
     
+    @IBOutlet weak var seeMoreButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
@@ -36,10 +37,12 @@ class ArticleListTableViewCell: UITableViewCell {
         didSet{
             self.backgroundColor = .white
             thumbnailImageView.image = nil
-            thumbnailImageView.backgroundColor = newsArticle?.urlToImage == nil ? .clear : .lightGray
+            thumbnailImageView.isHidden = newsArticle?.urlToImage == ""
             titleLabel.text = newsArticle?.title ?? "No title"
             self.sourceLabel.text = newsArticle?.source ?? ""
             self.dateLabel.text = UTCToLocal(date:   newsArticle?.publishedAt ?? "")
+            self.seeMoreButton.isHidden = newsArticle?.articleDescription == ""
+            
         }
     }
     override func awakeFromNib() {
@@ -54,7 +57,6 @@ class ArticleListTableViewCell: UITableViewCell {
     
     @IBAction func showMoreInfoButtonTapped(_ sender: Any) {
         delegate?.showMoreInfoButtonTapped(articleListTableViewCell: self)
-        
     }
     
     func UTCToLocal(date:String) -> String {
