@@ -20,7 +20,6 @@ class ArticleListViewController: UIViewController {
     
     let thumbnailCache = NSCache<NSString, UIImage>()
     
-    let stalkerNetworkService = StalkerNetworkService()
     @IBOutlet var tableView: UITableView!
     var articles:[NewsArticle] = []
     var lastPage = 0
@@ -50,7 +49,7 @@ class ArticleListViewController: UIViewController {
     @objc func reload(page:Int){
         if loading == false { //prevents duplicate loads if the user is on a slow network and scrolls up and down veyr fast
             loading = true
-            stalkerNetworkService.fetchNews(subject: searchSubject, page:page) { (articles) in
+            StalkerNetworkService.shared.fetchNews(subject: searchSubject, page:page) { (articles) in
                 DispatchQueue.main.async {
                     self.tableView.refreshControl?.endRefreshing()
                     let previousArticlesCount = self.articles.count
@@ -143,9 +142,8 @@ extension ArticleListViewController: UITableViewDataSource {
     //
     
     private func downloadImage( urlString:String, indexPath:IndexPath){
-        stalkerNetworkService.fetchThumbnailImage(urlString: urlString) { (image, error) in
+        StalkerNetworkService.shared.fetchThumbnailImage(urlString: urlString) { (image, error) in
             DispatchQueue.main.async {
-                //    if self.tableView.indexPathsForVisibleRows?.contains(indexPath) ?? false {
                 if let thumbnailImage = image {
                     self.thumbnailCache.setObject(thumbnailImage, forKey: urlString as NSString)
                     
@@ -158,12 +156,9 @@ extension ArticleListViewController: UITableViewDataSource {
                 }
                 else {
                     (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.image = nil
-                    (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.backgroundColor = .red
-                    
+                    (self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell)?.thumbnailImageView.backgroundColor = .clear
                 }
             }
-            // }
-            
         }
     }
 }
