@@ -9,12 +9,17 @@
 import UIKit
 
 class ArticleContentViewController: UIViewController {
+    
+    let imageViewBannerHeight:CGFloat = 200
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    
     
     var newsArticle:NewsArticle? = nil {
         didSet {
@@ -23,7 +28,8 @@ class ArticleContentViewController: UIViewController {
             authorLabel.text = newsArticle?.author ?? ""
             contentTextView.text = newsArticle?.content ?? ""
             descriptionLabel.text = newsArticle?.articleDescription ?? ""
-        }
+            imageViewHeightConstraint.constant = newsArticle?.urlToImage != "" ? imageViewBannerHeight : 0
+         }
     }
     
     
