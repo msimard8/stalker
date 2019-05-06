@@ -11,6 +11,12 @@ import AFNetworking
 
 class StalkerNetworkService: NSObject {
     
+    internal static var shared: StalkerNetworkService = {
+        let instance = StalkerNetworkService()
+        return instance
+    }()
+    
+    
     let newsAPIURL = "https://newsapi.org"
     let newsAPIKey = "50600433afee4b1db1c36a8fe9745da4"
     
