@@ -16,6 +16,7 @@
                 <outlet property="contentTextView" destination="Sxu-ej-jWg" id="DU3-g2-kpN"/>
                 <outlet property="descriptionLabel" destination="cGH-Ve-XBa" id="KUg-EJ-UNH"/>
                 <outlet property="imageView" destination="TX0-KJ-OEB" id="PKj-8X-ajP"/>
+                <outlet property="imageViewHeightConstraint" destination="XIO-v9-I7q" id="uNc-Pm-b7t"/>
                 <outlet property="sourceLabel" destination="wKS-aD-pen" id="uDX-2o-tUq"/>
                 <outlet property="titleLabel" destination="qa7-on-zrt" id="Ymn-Cm-BRu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
