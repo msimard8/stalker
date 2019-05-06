@@ -88,6 +88,7 @@
             <connections>
                 <outlet property="dateLabel" destination="QfT-p6-Oik" id="7bI-6B-Kdo"/>
                 <outlet property="descriptionLabel" destination="GGI-of-eTg" id="L3I-7s-LpG"/>
+                <outlet property="seeMoreButton" destination="lAw-Zu-UZJ" id="gfJ-N4-9J2"/>
                 <outlet property="sourceLabel" destination="C3O-mh-AUK" id="VHd-rl-elJ"/>
                 <outlet property="thumbnailImageView" destination="laA-UH-ZFp" id="wTC-mO-4Ew"/>
                 <outlet property="titleLabel" destination="wEn-UP-YxJ" id="LbL-34-M9h"/>
