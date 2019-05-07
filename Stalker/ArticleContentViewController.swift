@@ -38,10 +38,13 @@ class ArticleContentViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
-                                                 target: self,
-                                                 action: #selector(didTapAction(sender:)))
-        self.navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
+
+        if newsArticle?.articleLink != nil {
+            let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
+                                                     target: self,
+                                                     action: #selector(didTapAction(sender:)))
+            self.navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
+        }
     }
 
     @objc func didTapAction(sender: UIBarButtonItem) {
