@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TUSafariActivity
 
 class ArticleContentViewController: UIViewController {
 
@@ -45,8 +46,9 @@ class ArticleContentViewController: UIViewController {
 
     @objc func didTapAction(sender: UIBarButtonItem) {
         DispatchQueue.main.async {
-            let items = [self.newsArticle?.articleLink ?? "" ]
-            let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            let items = [(self.newsArticle?.articleLink ?? "") as Any, URL(string: self.newsArticle!.articleLink!) as Any]
+
+            let ac = UIActivityViewController(activityItems: items, applicationActivities: [TUSafariActivity()])
             self.present(ac, animated: true)
         }
     }
