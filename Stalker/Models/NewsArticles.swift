@@ -8,6 +8,6 @@
 
 import Foundation
 struct NewsArticles {
-    var articles:[NewsArticle]?
-    var count:Int?
+    var articles: [NewsArticle]?
+    var count: Int?
 }

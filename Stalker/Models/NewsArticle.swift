@@ -9,13 +9,13 @@
 import UIKit
 
 struct NewsArticle {
-    var title:String?
-    var urlToImage:String?
-    var source:String?
-    var articleDescription:String?
-    var publishedAt:String?
-    var author:String?
-    var content:String?
+    var title: String?
+    var urlToImage: String?
+    var source: String?
+    var articleDescription: String?
+    var publishedAt: String?
+    var author: String?
+    var content: String?
 }
 
 //class NewsArticle: NSObject {
