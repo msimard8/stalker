@@ -49,10 +49,11 @@ class ArticleContentViewController: UIViewController {
 
     @objc func didTapAction(sender: UIBarButtonItem) {
         DispatchQueue.main.async {
-            let items = [(self.newsArticle?.articleLink ?? "") as Any, URL(string: self.newsArticle!.articleLink!) as Any]
-
-            let ac = UIActivityViewController(activityItems: items, applicationActivities: [TUSafariActivity()])
-            self.present(ac, animated: true)
+            if let urlString = self.newsArticle?.articleLink {
+            let items = [(urlString) as Any, URL(string: urlString) as Any]
+            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: [TUSafariActivity()])
+            self.present(activityViewController, animated: true)
+            }
         }
     }
     /*
