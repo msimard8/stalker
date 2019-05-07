@@ -16,6 +16,7 @@ struct NewsArticle {
     var publishedAt: String?
     var author: String?
     var content: String?
+    var articleLink: String?
 }
 
 //class NewsArticle: NSObject {
