@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "271626E97A10A374ACF268E616CEC279"
-               BuildableName = "Pods_Stalker.framework"
-               BlueprintName = "Pods-Stalker"
+               BlueprintIdentifier = "CEBB3A9B48D0AE590F1AFB5D862D5D80"
+               BuildableName = "TUSafariActivity.bundle"
+               BlueprintName = "TUSafariActivity-TUSafariActivity"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "271626E97A10A374ACF268E616CEC279"
-            BuildableName = "Pods_Stalker.framework"
-            BlueprintName = "Pods-Stalker"
+            BlueprintIdentifier = "CEBB3A9B48D0AE590F1AFB5D862D5D80"
+            BuildableName = "TUSafariActivity.bundle"
+            BlueprintName = "TUSafariActivity-TUSafariActivity"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

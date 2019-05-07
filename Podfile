@@ -7,7 +7,8 @@ target 'Stalker' do
 
   # Pods for Stalker
   pod 'AFNetworking'
-
+  pod 'TUSafariActivity', '~> 1.0'
+  
   target 'StalkerTests' do
     inherit! :search_paths
     # Pods for testing
