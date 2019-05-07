@@ -27,7 +27,7 @@ class ArticleContentViewController: UIViewController {
             contentTextView.text = newsArticle?.content ?? ""
             descriptionLabel.text = newsArticle?.articleDescription ?? ""
             imageViewHeightConstraint.constant = newsArticle?.urlToImage != "" ? imageViewBannerHeight : 0
-         }
+        }
     }
 
     override func viewDidLoad() {
@@ -37,11 +37,18 @@ class ArticleContentViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapAction(sender:)))
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
+                                                 target: self,
+                                                 action: #selector(didTapAction(sender:)))
         self.navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
     }
 
     @objc func didTapAction(sender: UIBarButtonItem) {
+        DispatchQueue.main.async {
+            let items = [self.newsArticle?.articleLink ?? "" ]
+            let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            self.present(ac, animated: true)
+        }
     }
     /*
      // MARK: - Navigation
