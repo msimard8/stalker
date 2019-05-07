@@ -62,7 +62,8 @@ class StalkerNetworkService: NSObject {
                     articleDescription: articleJSON["description"] as? String,
                     publishedAt: articleJSON["publishedAt"] as? String,
                     author: articleJSON["author"] as? String,
-                    content: articleJSON["content"] as? String
+                    content: articleJSON["content"] as? String,
+                    articleLink: articleJSON["url"] as? String
                     ))
             }
             completion(newsArticles)
