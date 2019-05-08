@@ -176,9 +176,9 @@ extension ArticleListViewController: UITableViewDataSource {
 
     private func downloadImage(urlString: String, indexPath: IndexPath) {
         StalkerNetworkService.shared.fetchThumbnailImage(urlString: urlString) { (image, error) in
+            let articleListTableViewCell = self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell
             if error == nil {
                 DispatchQueue.main.async {
-                    let articleListTableViewCell = self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell
                     if let thumbnailImage = image {
                         ImageCache.shared.storeImage(key: urlString, image: thumbnailImage)
 
@@ -186,13 +186,17 @@ extension ArticleListViewController: UITableViewDataSource {
                         if articleListHeaderView?.backgroundImageView.image == nil {
                             articleListHeaderView?.backgroundImageView.image = thumbnailImage
                         }
-                        articleListTableViewCell?.thumbnailImageView.image = thumbnailImage
+                        articleListTableViewCell?.setImage(thumbnail: thumbnailImage)
                         articleListTableViewCell?.thumbnailImageView.backgroundColor = .clear
                     } else {
                         articleListTableViewCell?.thumbnailImageView.image = nil
                         articleListTableViewCell?.thumbnailImageView.backgroundColor = .clear
                     }
                 }
+            }
+            else {
+                articleListTableViewCell?.setImage(thumbnail: nil)
+                articleListTableViewCell?.thumbnailImageView.backgroundColor = .clear
             }
         }
     }
