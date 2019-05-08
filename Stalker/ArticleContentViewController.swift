@@ -27,7 +27,7 @@ class ArticleContentViewController: UIViewController {
             authorLabel.text = newsArticle?.author ?? ""
             contentTextView.text = newsArticle?.content ?? ""
             descriptionLabel.text = newsArticle?.articleDescription ?? ""
-            imageViewHeightConstraint.constant = newsArticle?.urlToImage != "" ? imageViewBannerHeight : 0
+            imageViewHeightConstraint.constant = (newsArticle?.urlToImage?.count ?? 0 > 0) ? imageViewBannerHeight : 0
         }
     }
 
@@ -44,6 +44,24 @@ class ArticleContentViewController: UIViewController {
                                                      target: self,
                                                      action: #selector(didTapAction(sender:)))
             self.navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
+        }
+
+        if let imageURL = newsArticle?.urlToImage {
+            if imageURL != "" && (ImageCache.shared.retrieveImage(key: imageURL) != nil) {
+                StalkerNetworkService.shared.fetchThumbnailImage(urlString: imageURL) { (image, error) in
+                    if error != nil {
+                        print (error as Any)
+                    } else {
+                        DispatchQueue.main.async {
+                            if let contentImage = image {
+                                ImageCache.shared.storeImage(key: imageURL, image: contentImage)
+                                self.imageView.image = image
+                            }
+
+                        }
+                    }
+                }
+            }
         }
     }
 
