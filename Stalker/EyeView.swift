@@ -34,14 +34,14 @@ class EyeView: UIView {
         self.backgroundColor = .clear
     }
 
-    func drawEye() {
+    private func drawEye() {
         self.layer.addSublayer(createEyeOutlineShapeLayer())
         self.layer.addSublayer(createPupilShapeLayer())
         eyeLidShapeLayer = createEyelidShapeLayer()
         self.layer.addSublayer(eyeLidShapeLayer!)
     }
 
-    func animate () {
+    private func animate () {
         if let eyeLidShape = eyeLidShapeLayer {
             let animationGroup = CAAnimationGroup()
             animationGroup.repeatCount = .greatestFiniteMagnitude
@@ -53,7 +53,7 @@ class EyeView: UIView {
         }
     }
 
-    func blinkAnimation(beginTime: CFTimeInterval) -> CABasicAnimation {
+    private func blinkAnimation(beginTime: CFTimeInterval) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "path")
         animation.toValue = CGPath(rect: CGRect(x: 0,
                                                 y: 0,
@@ -68,13 +68,13 @@ class EyeView: UIView {
         return animation
     }
 
-    func delayAnimation(duration: Double) -> CAAnimationGroup {
+    private func delayAnimation(duration: Double) -> CAAnimationGroup {
         let animation =  CAAnimationGroup()
         animation.duration = duration
         return animation
     }
 
-    func createEyeOutlineShapeLayer() -> CAShapeLayer {
+    private func createEyeOutlineShapeLayer() -> CAShapeLayer {
         let eyeOutlineShapeLayer = CAShapeLayer()
         eyeOutlineShapeLayer.frame = CGRect(x: 0,
                                             y: bounds.height * 0.1 ,
@@ -93,7 +93,7 @@ class EyeView: UIView {
         return eyeOutlineShapeLayer
     }
 
-    func createPupilShapeLayer() -> CAShapeLayer {
+    private func createPupilShapeLayer() -> CAShapeLayer {
         let pupilShapeLayer = CAShapeLayer()
         pupilShapeLayer.frame = CGRect(x: 0, y: 0,
                                        width: frame.width, height: frame.height)
@@ -109,7 +109,7 @@ class EyeView: UIView {
         return pupilShapeLayer
     }
 
-    func createEyelidShapeLayer() -> CAShapeLayer {
+    private func createEyelidShapeLayer() -> CAShapeLayer {
         let eyelidShapeLayer = CAShapeLayer()
         eyelidShapeLayer.frame = CGRect(x: 0,
                                         y: 0,
