@@ -13,8 +13,11 @@ protocol ArticleListTableViewCellDelegate: class {
 }
 class ArticleListTableViewCell: UITableViewCell {
 
-   static let identifier = "ArticleListTableViewCell"
+    let thumbnailHeight:CGFloat = 120.5
+    static let identifier = "ArticleListTableViewCell"
    weak var delegate: ArticleListTableViewCellDelegate?
+
+    @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var seeMoreButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -36,16 +39,22 @@ class ArticleListTableViewCell: UITableViewCell {
         didSet {
             self.backgroundColor = .white
             thumbnailImageView.image = nil
-            thumbnailImageView.isHidden = newsArticle?.urlToImage == "" || newsArticle?.urlToImage == nil
+            thumbnailImageView.isHidden = !hasImage()
+            thumbnailHeightConstraint.constant = hasImage() ? thumbnailHeight : 0
             titleLabel.text = newsArticle?.title ?? "No title"
             self.sourceLabel.text = newsArticle?.source ?? ""
             self.dateLabel.text = Utils.formatDate(date: newsArticle?.publishedAt ?? "")
             self.seeMoreButton.isHidden = newsArticle?.articleDescription == ""
+            self.updateConstraints()
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+
+    private func hasImage()-> Bool {
+        return !(newsArticle?.urlToImage == "" || newsArticle?.urlToImage == nil)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
