@@ -20,6 +20,7 @@ class ImageCache: NSObject {
     func setImageCap(cap: Int) {
         thumbnailCache.countLimit = cap
     }
+
     func removeImages() {
         thumbnailCache.removeAllObjects()
     }
