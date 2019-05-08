@@ -10,14 +10,15 @@ import UIKit
 
 class ArticleListViewController: UIViewController {
 
+    @IBOutlet weak var errorLabel: UILabel!
+
     let cellHeight: CGFloat = 150
     let cellExpandedHeight: CGFloat = 200
     var expandedIndexPaths: [IndexPath] = []
     let headerHeight: CGFloat = 200
 
     let maxArticleCount = 100 //(This is set by newsapi.org for dev accounts)
-    let searchSubject = "Yzerman"
-    let thumbnailCache = NSCache<NSString, UIImage>()
+    let searchSubject = Utils.stalkerName
 
     @IBOutlet var tableView: UITableView!
     var articles: [NewsArticle] = []
@@ -29,7 +30,7 @@ class ArticleListViewController: UIViewController {
         self.tableView.estimatedRowHeight = cellHeight
         self.tableView.rowHeight = UITableView.automaticDimension
         let refreshControl = UIRefreshControl()
-        //  refreshControl.addTarget(self, action: #selector(reload), for: UIControl.Event.valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.tableView.refreshControl = refreshControl
         self.tableView.register(UINib(nibName: "ArticleListLoadMoreTableViewCell", bundle: nil),
                                 forCellReuseIdentifier: ArticleListLoadMoreTableViewCell.identifier)
@@ -37,43 +38,88 @@ class ArticleListViewController: UIViewController {
                                 forCellReuseIdentifier: ArticleListTableViewCell.identifier)
         self.tableView.register(UINib(nibName: "ArticleListHeaderView", bundle: nil),
                                 forHeaderFooterViewReuseIdentifier: ArticleListHeaderView.identifier)
-        self.title = searchSubject
-        thumbnailCache.countLimit = maxArticleCount
-
+        self.title = searchSubject.uppercased()
+        ImageCache.shared.setImageCap(cap: maxArticleCount)
+        setupNavigationBar()
         self.reload(page: lastPage + 1)
     }
 
     override func didReceiveMemoryWarning() {
-        thumbnailCache.removeAllObjects()
+        ImageCache.shared.removeImages()
     }
 
-    @objc func reload(page: Int) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        //TODO: Cancel downloads when leaving screen. This would require a more sophisticatd way to keep track of network tasks
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated )
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+
+    @objc func refresh() {
+        lastPage = 0
+        ImageCache.shared.removeImages()
+        articles.removeAll()
+        self.tableView.reloadData()
+        reload(page: lastPage + 1)
+    }
+
+    func setupNavigationBar() {
+        let settingsButton = UIButton()
+        settingsButton.setImage(UIImage(named: "settings"), for: .normal)
+
+        settingsButton.addTarget(self, action: #selector(ArticleListViewController.didTapSettings(sender:)), for: .touchUpInside)
+        settingsButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+
+        let settingsBarButtonItem = UIBarButtonItem(customView: settingsButton)
+        self.navigationItem.setRightBarButtonItems([settingsBarButtonItem], animated: false)
+    }
+
+    @objc func didTapSettings(sender: UIButton) {
+        DispatchQueue.main.async {
+            let settingsViewController = SettingsViewController()
+            settingsViewController.delegate = self
+            self.present(settingsViewController, animated: true, completion: {
+            })
+        }
+    }
+
+    func reload(page: Int) {
         if loading == false { //prevents duplicate loads on slow networks
             loading = true
-            StalkerNetworkService.shared.fetchNews(subject: searchSubject, page: page) { (articles) in
+            StalkerNetworkService.shared.fetchNews(subject: searchSubject, page: page) { (articles, _) in
                 DispatchQueue.main.async {
                     self.tableView.refreshControl?.endRefreshing()
                     let previousArticlesCount = self.articles.count
                     self.articles += articles
 
-                    //only reload new articles for smoothness
-                    var newIndexPaths: [IndexPath] = []
-                    for idx in previousArticlesCount...previousArticlesCount + articles.count-1 {
-                        newIndexPaths.append(IndexPath(row: idx, section: 0))
-                    }
-                    //the load more cell if we are under the max articles
-                    if self.articles.count < self.maxArticleCount {
-                        //only add load more cell if its not there before
-                        if self.tableView.numberOfRows(inSection: 0) == previousArticlesCount {
-                            newIndexPaths.append(IndexPath(row: self.articles.count, section: 0))
+                    if articles.count > 0 {
+                        self.errorLabel.isHidden = true
+                        //only reload new articles for smoothness
+                        var newIndexPaths: [IndexPath] = []
+                        for idx in previousArticlesCount...previousArticlesCount + articles.count-1 {
+                            newIndexPaths.append(IndexPath(row: idx, section: 0))
                         }
-                    } else if self.articles.count == self.maxArticleCount {
-                        newIndexPaths.removeLast() //no more articles, no need to show the load more cell
-                    }
+                        //the load more cell if we are under the max articles
+                        if self.articles.count < self.maxArticleCount {
+                            //only add load more cell if its not there before
+                            if self.tableView.numberOfRows(inSection: 0) == previousArticlesCount {
+                                newIndexPaths.append(IndexPath(row: self.articles.count, section: 0))
+                            }
+                        } else if self.articles.count == self.maxArticleCount {
+                            newIndexPaths.removeLast() //no more articles, no need to show the load more cell
+                        }
 
-                    self.tableView.insertRows(at: newIndexPaths, with: .fade)
-                    self.lastPage += 1
-                    self.loading = false
+                        self.tableView.insertRows(at: newIndexPaths, with: .fade)
+                        self.lastPage += 1
+                        self.loading = false
+                    } else {
+                        self.errorLabel.isHidden = false
+                    }
                 }
             }
         }
@@ -134,11 +180,11 @@ extension ArticleListViewController: UITableViewDataSource {
                 DispatchQueue.main.async {
                     let articleListTableViewCell = self.tableView.cellForRow(at: indexPath) as? ArticleListTableViewCell
                     if let thumbnailImage = image {
-                        self.thumbnailCache.setObject(thumbnailImage, forKey: urlString as NSString)
+                        ImageCache.shared.storeImage(key: urlString, image: thumbnailImage)
 
                         let articleListHeaderView = self.tableView.headerView(forSection: 0) as? ArticleListHeaderView
                         if articleListHeaderView?.backgroundImageView.image == nil {
-                            articleListHeaderView?.backgroundImageView.image = image
+                            articleListHeaderView?.backgroundImageView.image = thumbnailImage
                         }
                         articleListTableViewCell?.thumbnailImageView.image = thumbnailImage
                         articleListTableViewCell?.thumbnailImageView.backgroundColor = .clear
@@ -163,7 +209,7 @@ extension ArticleListViewController: UITableViewDelegate {
             articleCell.delegate  = self
             if let urlImage = articleCell.newsArticle?.urlToImage {
                 articleCell.thumbnailImageView.backgroundColor = .lightGray
-                if let cachedImage = thumbnailCache.object(forKey: urlImage as NSString) {
+                if let cachedImage = ImageCache.shared.retrieveImage(key: urlImage) {
                     articleCell.thumbnailImageView.image = cachedImage
                 } else {
                     downloadImage(urlString: urlImage, indexPath: indexPath)
@@ -181,9 +227,8 @@ extension ArticleListViewController: UITableViewDelegate {
         let articleContentViewController = ArticleContentViewController()
         articleContentViewController.loadView()
         articleContentViewController.newsArticle = articles[indexPath.row]
-
         if let imageURL = articles[indexPath.row].urlToImage {
-            articleContentViewController.imageView.image = thumbnailCache.object(forKey: imageURL as NSString)
+            articleContentViewController.imageView.image = ImageCache.shared.retrieveImage(key: imageURL)
         }
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(articleContentViewController, animated: true)
@@ -202,6 +247,18 @@ extension ArticleListViewController: ArticleListTableViewCellDelegate {
                     self.expandedIndexPaths = self.expandedIndexPaths.filter {$0 != indexPath}
                 }
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
+}
+
+extension ArticleListViewController: SettingsViewControllerDelegate {
+    func didSelectSwitchStalker(settingsViewController: SettingsViewController) {
+        DispatchQueue.main.async {
+            settingsViewController.dismiss(animated: true) {}
+            DispatchQueue.main.async {
+                ImageCache.shared.removeImages()
+                self.navigationController?.popToRootViewController(animated: true)
             }
         }
     }
