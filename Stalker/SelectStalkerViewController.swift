@@ -10,21 +10,61 @@ import UIKit
 
 class SelectStalkerViewController: UIViewController {
 
+    @IBAction func didTapSteveYzerman(_ sender: Any) {
+        Utils.stalkerName = "Steve Yzerman"
+        goToArticleList()
+    }
+
+    @IBAction func didTapTheNightKing(_ sender: Any) {
+        Utils.stalkerName = "The Night King"
+        goToArticleList()
+    }
+
+    @IBAction func didTapYourChoice(_ sender: Any) {
+
+        let alertController = UIAlertController(title: "Choose who to stalk", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Stalker name"
+        }
+        let confirmAction = UIAlertAction(title: "Stalk", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            Utils.stalkerName = textField.text ?? ""
+            self.goToArticleList()
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+
+    }
+
+    private func goToArticleList() {
+        if Utils.stalkerName != "" {
+            let articleListViewController = ArticleListViewController()
+            articleListViewController.view.backgroundColor = UIColor.black
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(articleListViewController, animated: true)
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    */
+    /*
+     // MARK: - Navigation
+
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
