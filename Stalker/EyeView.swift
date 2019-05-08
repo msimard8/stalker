@@ -30,7 +30,6 @@ class EyeView: UIView {
 
     override func layoutSubviews() {
         drawEye()
-        self.animate()
         self.backgroundColor = .clear
     }
 
@@ -41,7 +40,7 @@ class EyeView: UIView {
         self.layer.addSublayer(eyeLidShapeLayer!)
     }
 
-    private func animate () {
+     func animate () {
         if let eyeLidShape = eyeLidShapeLayer {
             let animationGroup = CAAnimationGroup()
             animationGroup.repeatCount = .greatestFiniteMagnitude
