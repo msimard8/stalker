@@ -25,7 +25,7 @@ class StalkerNetworkService: NSObject {
     func fetchThumbnailImage(urlString: String, completion: @escaping ((_ image: UIImage?, _ error: Error?) -> Void)) {
 
         guard let imageURL = URL(string: urlString) else {
-            completion(nil, NSError())
+            completion(nil, NSError.init(domain: "Bad URL", code: 0, userInfo: nil))
             return
         }
         imageDownloader.downloadImage(for: URLRequest(url: imageURL), success: { (_, _, image) in
