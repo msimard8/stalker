@@ -16,15 +16,16 @@ class StalkerNetworkService: NSObject {
         return instance
     }()
 
-    let newsAPIURL = "https://newsapi.org"
-    let newsAPIKey = "50600433afee4b1db1c36a8fe9745da4"
+    private let newsAPIURL = "https://newsapi.org"
+    private let newsAPIKey = "50600433afee4b1db1c36a8fe9745da4"
 
-    let manager = AFHTTPSessionManager(baseURL: URL(string: "https://newsapi.org"))
-    let imageDownloader = AFImageDownloader()
+    private let manager = AFHTTPSessionManager(baseURL: URL(string: "https://newsapi.org"))
+    private let imageDownloader = AFImageDownloader()
 
     func fetchThumbnailImage(urlString: String, completion: @escaping ((_ image: UIImage?, _ error: Error?) -> Void)) {
 
-        guard let imageURL = URL(string: urlString)else {
+        guard let imageURL = URL(string: urlString) else {
+            completion(nil, NSError())
             return
         }
         imageDownloader.downloadImage(for: URLRequest(url: imageURL), success: { (_, _, image) in
@@ -34,7 +35,7 @@ class StalkerNetworkService: NSObject {
         })
     }
 
-    func fetchNews(subject: String, page: Int, completion: @escaping((_ articles: [NewsArticle]) -> Void)) {
+    func fetchNews(subject: String, page: Int, completion: @escaping((_ articles: [NewsArticle], _ networkResponse: Any?) -> Void)) {
 
         let parameters = ["q": subject,
                           "apiKey": newsAPIKey,
@@ -43,7 +44,7 @@ class StalkerNetworkService: NSObject {
 
         manager.get("/v2/everything", parameters: parameters, progress: { (_) in
 
-        }, success: { (_, response) in
+        }, success: { (_, response: Any?) in
             guard let json = response as? [String: Any] else {
                 return
             }
@@ -53,7 +54,6 @@ class StalkerNetworkService: NSObject {
             }
 
             var newsArticles: [NewsArticle] = []
-
             for articleJSON in articles {
                 newsArticles.append(NewsArticle(
                     title: articleJSON["title"] as? String,
@@ -66,7 +66,7 @@ class StalkerNetworkService: NSObject {
                     articleLink: articleJSON["url"] as? String
                     ))
             }
-            completion(newsArticles)
+            completion(newsArticles, response )
         }, failure: { (_, error) in
             print (error)
         })
