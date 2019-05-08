@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArticleListViewController" customModule="Stalker" customModuleProvider="target">
             <connections>
+                <outlet property="errorLabel" destination="Hue-dJ-tGL" id="fz1-vY-OYr"/>
                 <outlet property="tableView" destination="JpQ-Sm-ugV" id="wuf-RH-vyt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,17 +24,26 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JpQ-Sm-ugV">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="XWj-SL-wnS"/>
                         <outlet property="delegate" destination="-1" id="3fV-aZ-Rex"/>
                     </connections>
                 </tableView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry creep, it does't look like this person exists.  Hit settings and choose a different person " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hue-dJ-tGL">
+                    <rect key="frame" x="20" y="432.5" width="374" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="Hue-dJ-tGL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="6dh-uD-k2L"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JpQ-Sm-ugV" secondAttribute="bottom" id="Srs-gd-woK"/>
+                <constraint firstItem="Hue-dJ-tGL" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Xvh-R3-iY8"/>
                 <constraint firstItem="JpQ-Sm-ugV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Y3n-nV-E9M"/>
+                <constraint firstItem="Hue-dJ-tGL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-20" id="pCk-WO-CSz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JpQ-Sm-ugV" secondAttribute="trailing" id="wa4-uR-0xD"/>
                 <constraint firstItem="JpQ-Sm-ugV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ya7-Fb-dmj"/>
             </constraints>
