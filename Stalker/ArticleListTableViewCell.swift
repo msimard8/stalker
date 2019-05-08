@@ -18,7 +18,6 @@ class ArticleListTableViewCell: UITableViewCell {
    weak var delegate: ArticleListTableViewCellDelegate?
 
     @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
-
     @IBOutlet weak var seeMoreButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -46,6 +45,7 @@ class ArticleListTableViewCell: UITableViewCell {
             self.dateLabel.text = Utils.formatDate(date: newsArticle?.publishedAt ?? "")
             self.seeMoreButton.isHidden = newsArticle?.articleDescription == ""
             self.updateConstraints()
+
         }
     }
     override func awakeFromNib() {
@@ -53,8 +53,8 @@ class ArticleListTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    private func hasImage()-> Bool {
-        return !(newsArticle?.urlToImage == "" || newsArticle?.urlToImage == nil)
+    private func hasImage() -> Bool {
+        return (newsArticle?.urlToImage?.count ?? 0 > 0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -64,5 +64,17 @@ class ArticleListTableViewCell: UITableViewCell {
 
     @IBAction func showMoreInfoButtonTapped(_ sender: Any) {
         delegate?.showMoreInfoButtonTapped(articleListTableViewCell: self)
+    }
+
+    func setImage(thumbnail:UIImage?){
+        if thumbnail == nil {
+            thumbnailImageView.image = nil
+            thumbnailHeightConstraint.constant = 0
+        }
+        else {
+            thumbnailImageView.image = thumbnail
+            thumbnailHeightConstraint.constant = thumbnailHeight
+        }
+        updateConstraintsIfNeeded()
     }
 }
