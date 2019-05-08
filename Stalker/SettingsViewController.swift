@@ -8,15 +8,23 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate: class {
+    func didSelectSwitchStalker(settingsViewController: SettingsViewController)
+}
 class SettingsViewController: UIViewController {
+
+    weak var delegate: SettingsViewControllerDelegate?
+
+    @IBAction func switchStalkerPressed(_ sender: Any) {
+        Utils.stalkerName = ""
+        delegate?.didSelectSwitchStalker(settingsViewController: self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
-
-
+    
     /*
     // MARK: - Navigation
 
