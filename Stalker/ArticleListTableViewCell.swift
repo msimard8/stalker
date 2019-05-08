@@ -36,10 +36,10 @@ class ArticleListTableViewCell: UITableViewCell {
         didSet {
             self.backgroundColor = .white
             thumbnailImageView.image = nil
-            thumbnailImageView.isHidden = newsArticle?.urlToImage == ""
+            thumbnailImageView.isHidden = newsArticle?.urlToImage == "" || newsArticle?.urlToImage == nil
             titleLabel.text = newsArticle?.title ?? "No title"
             self.sourceLabel.text = newsArticle?.source ?? ""
-            self.dateLabel.text = formatDate(date: newsArticle?.publishedAt ?? "")
+            self.dateLabel.text = Utils.formatDate(date: newsArticle?.publishedAt ?? "")
             self.seeMoreButton.isHidden = newsArticle?.articleDescription == ""
         }
     }
@@ -55,18 +55,5 @@ class ArticleListTableViewCell: UITableViewCell {
 
     @IBAction func showMoreInfoButtonTapped(_ sender: Any) {
         delegate?.showMoreInfoButtonTapped(articleListTableViewCell: self)
-    }
-
-    func formatDate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        if let formmattedDate = dateFormatter.date(from: date) {
-            print (formmattedDate)
-            let displayFormatter = DateFormatter()
-            displayFormatter.locale = Locale(identifier: "en_US")
-            displayFormatter.dateFormat = "MMM d, YYYY, h:mm a"
-            return displayFormatter.string(from: formmattedDate)
-        }
-        return ""
     }
 }
