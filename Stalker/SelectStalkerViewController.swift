@@ -10,6 +10,8 @@ import UIKit
 
 class SelectStalkerViewController: UIViewController {
 
+    @IBOutlet weak var eyeView: EyeView!
+
     @IBAction func didTapSteveYzerman(_ sender: Any) {
         Utils.stalkerName = "Steve Yzerman"
         goToArticleList()
@@ -56,6 +58,12 @@ class SelectStalkerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.eyeView.animate()
+
     }
     /*
      // MARK: - Navigation

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectStalkerViewController" customModule="Stalker" customModuleProvider="target">
             <connections>
+                <outlet property="eyeView" destination="3N0-Fe-9CG" id="pWi-RM-to6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
