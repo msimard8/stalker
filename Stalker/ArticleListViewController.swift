@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol ArticleListViewControllerDelegate: class {
+    func didSelectArticle (article: NewsArticle)
+}
 class ArticleListViewController: UIViewController {
+
+    weak var delegate: ArticleListViewControllerDelegate?
 
     @IBOutlet weak var errorLabel: UILabel!
 
@@ -41,7 +46,6 @@ class ArticleListViewController: UIViewController {
         self.title = searchSubject.uppercased()
         ImageCache.shared.setImageCap(cap: maxArticleCount)
         setupNavigationBar()
-        self.reload(page: lastPage + 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +62,8 @@ class ArticleListViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.isTranslucent = false
+        self.reload(page: lastPage + 1)
+
     }
 
     @objc func refresh() {
@@ -228,15 +234,7 @@ extension ArticleListViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let articleContentViewController = ArticleContentViewController()
-        articleContentViewController.loadView()
-        articleContentViewController.newsArticle = articles[indexPath.row]
-        if let imageURL = articles[indexPath.row].urlToImage {
-            articleContentViewController.imageView.image = ImageCache.shared.retrieveImage(key: imageURL)
-        }
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(articleContentViewController, animated: true)
-        }
+        delegate?.didSelectArticle(article: articles[indexPath.row])
     }
 }
 
@@ -262,8 +260,9 @@ extension ArticleListViewController: SettingsViewControllerDelegate {
             settingsViewController.dismiss(animated: true) {}
             DispatchQueue.main.async {
                 ImageCache.shared.removeImages()
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-        }
+                DispatchQueue.main.async {
+                    UIApplication.shared.keyWindow?.rootViewController = SelectStalkerViewController()
+                }
+            }}
     }
 }
