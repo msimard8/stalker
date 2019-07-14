@@ -17,8 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        window!.rootViewController = ArticleSplitViewController()
+
+        if Utils.stalkerName == "" {
+            window!.rootViewController = SelectStalkerViewController()
+        }
+        else {
+            window!.rootViewController = ArticleSplitViewController()
+        }
         window!.makeKeyAndVisible()
         return true
     }
