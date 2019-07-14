@@ -11,7 +11,7 @@ import TUSafariActivity
 
 class ArticleContentViewController: UIViewController {
 
-    let imageViewBannerHeight: CGFloat = 200
+    var imageViewBannerHeight: CGFloat = 300
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -25,7 +25,6 @@ class ArticleContentViewController: UIViewController {
             if let imageURL = self.newsArticle?.urlToImage {
                 self.imageView.image = ImageCache.shared.retrieveImage(key: imageURL)
             }
-
             titleLabel.text = newsArticle?.title ?? ""
             sourceLabel.text = newsArticle?.source ?? ""
             authorLabel.text = newsArticle?.author ?? ""
