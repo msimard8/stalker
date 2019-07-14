@@ -37,12 +37,6 @@ class ArticleSplitViewController: UISplitViewController {
         // Do any additional setup after loading the view.
     }
 
-
-
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-        return true
-    }
-
     /*
      // MARK: - Navigation
 
@@ -56,16 +50,9 @@ class ArticleSplitViewController: UISplitViewController {
 }
 
 extension ArticleSplitViewController :UISplitViewControllerDelegate {
-
-    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
-
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
     }
-    //    func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
-    //        if let articleContentViewController = vc as? ArticleContentViewController {
-    //            return articleContentViewController.newsArticle != nil
-    //    }
-    //        return true
-    //    }
 }
 
 extension ArticleSplitViewController : ArticleListViewControllerDelegate {
