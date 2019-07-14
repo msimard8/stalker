@@ -166,7 +166,7 @@ extension ArticleListViewController: UITableViewDataSource {
             }
             let article =  articles[indexPath.row]
             cell.newsArticle = article
-            cell.selectionStyle = .none
+            cell.selectionStyle = .default
             cell.expanded = self.expandedIndexPaths.contains(indexPath)
             return cell
         }
