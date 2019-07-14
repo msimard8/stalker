@@ -42,11 +42,9 @@ class SelectStalkerViewController: UIViewController {
 
     private func goToArticleList() {
         if Utils.stalkerName != "" {
-            let articleListViewController = ArticleListViewController()
-            articleListViewController.view.backgroundColor = UIColor.black
             DispatchQueue.main.async {
-                self.navigationController?.pushViewController(articleListViewController, animated: true)
-            }
+                UIApplication.shared.keyWindow?.rootViewController = ArticleSplitViewController()
+             }
         }
     }
 
