@@ -50,7 +50,6 @@ class ArticleSplitViewController: UISplitViewController {
      // Pass the selected object to the new view controller.
      }
      */
-
 }
 
 extension ArticleSplitViewController :UISplitViewControllerDelegate {
@@ -64,6 +63,7 @@ extension ArticleSplitViewController : ArticleListViewControllerDelegate {
     func didSelectArticle(article: NewsArticle) {
         articleContentViewController.loadView()
         articleContentViewController.newsArticle = article
+        articleContentNavigationController.popToRootViewController(animated: false)
         self.showDetailViewController(articleContentNavigationController, sender: self)
     }
 }
