@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FBA111A0165FA191C06A42D1F7712E7E"
+               BlueprintIdentifier = "38A86181B4A5EDF47DBCE9E0FCF7DFAF"
                BuildableName = "Pods_StalkerTests.framework"
                BlueprintName = "Pods-StalkerTests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FBA111A0165FA191C06A42D1F7712E7E"
+            BlueprintIdentifier = "38A86181B4A5EDF47DBCE9E0FCF7DFAF"
             BuildableName = "Pods_StalkerTests.framework"
             BlueprintName = "Pods-StalkerTests"
             ReferencedContainer = "container:Pods.xcodeproj">

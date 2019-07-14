@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CEBB3A9B48D0AE590F1AFB5D862D5D80"
+               BlueprintIdentifier = "7DD2085A0DF56509B5D065A706C12E19"
                BuildableName = "TUSafariActivity.bundle"
                BlueprintName = "TUSafariActivity-TUSafariActivity"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CEBB3A9B48D0AE590F1AFB5D862D5D80"
+            BlueprintIdentifier = "7DD2085A0DF56509B5D065A706C12E19"
             BuildableName = "TUSafariActivity.bundle"
             BlueprintName = "TUSafariActivity-TUSafariActivity"
             ReferencedContainer = "container:Pods.xcodeproj">
