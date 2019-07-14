@@ -10,7 +10,7 @@ import XCTest
 @testable import Stalker
 
 class StalkerTests: XCTestCase {
-    
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         //
@@ -20,17 +20,15 @@ class StalkerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-
     //CACHE
-    func testStoreAndRetreiveImage(){
-        ImageCache.shared.storeImage(key: "image", image: UIImage.emptyImage(with: CGSize(width: 20, height: 20))!)
+    func testStoreAndRetreiveImage() {
+        ImageCache.shared.storeImage (key: "image", image: UIImage.emptyImage (with: CGSize(width: 20, height: 20))!)
         XCTAssert(((ImageCache.shared.retrieveImage(key: "image")) != nil), "Image not found after storage")
     }
 
     func testRetrieveNonExistentImage () {
         XCTAssert(((ImageCache.shared.retrieveImage(key: "image")) == nil), "returned image when expecting none")
     }
-
 
     //NETWORKING
     func testNewsResponseFormat() {

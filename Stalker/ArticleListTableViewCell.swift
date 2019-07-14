@@ -13,7 +13,7 @@ protocol ArticleListTableViewCellDelegate: class {
 }
 class ArticleListTableViewCell: UITableViewCell {
 
-    let thumbnailHeight:CGFloat = 120.5
+    let thumbnailHeight: CGFloat = 120.5
     static let identifier = "ArticleListTableViewCell"
    weak var delegate: ArticleListTableViewCellDelegate?
 
@@ -66,12 +66,11 @@ class ArticleListTableViewCell: UITableViewCell {
         delegate?.showMoreInfoButtonTapped(articleListTableViewCell: self)
     }
 
-    func setImage(thumbnail:UIImage?){
+    func setImage(thumbnail: UIImage?) {
         if thumbnail == nil {
             thumbnailImageView.image = nil
             thumbnailHeightConstraint.constant = 0
-        }
-        else {
+        } else {
             thumbnailImageView.image = thumbnail
             thumbnailHeightConstraint.constant = thumbnailHeight
         }

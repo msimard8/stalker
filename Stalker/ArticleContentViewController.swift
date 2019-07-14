@@ -70,10 +70,9 @@ class ArticleContentViewController: UIViewController {
 
     @IBAction func didTapShowFullArticle(_ sender: Any) {
         let webViewController = ArticleWebViewController()
-        webViewController.articleUrlString = self.newsArticle?.articleLink 
+        webViewController.articleUrlString = self.newsArticle?.articleLink
         self.navigationController?.pushViewController(webViewController, animated: true)
     }
-
 
     @objc func didTapAction(sender: UIBarButtonItem) {
         DispatchQueue.main.async {

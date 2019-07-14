@@ -11,7 +11,7 @@ import UIKit
 class ArticleSplitViewController: UISplitViewController {
 
     let articleContentViewController = ArticleContentViewController()
-    var articleContentNavigationController:UINavigationController
+    var articleContentNavigationController: UINavigationController
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         articleContentNavigationController = UINavigationController(rootViewController: articleContentViewController)
@@ -27,7 +27,7 @@ class ArticleSplitViewController: UISplitViewController {
 
         UIBarButtonItem.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.viewControllers = [navigationController,BlinkingEyeViewController()]
+        self.viewControllers = [navigationController, BlinkingEyeViewController()]
 
         self.preferredDisplayMode = .allVisible
         delegate = self
@@ -52,13 +52,13 @@ class ArticleSplitViewController: UISplitViewController {
      */
 }
 
-extension ArticleSplitViewController :UISplitViewControllerDelegate {
+extension ArticleSplitViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true
     }
 }
 
-extension ArticleSplitViewController : ArticleListViewControllerDelegate {
+extension ArticleSplitViewController: ArticleListViewControllerDelegate {
 
     func didSelectArticle(article: NewsArticle) {
         articleContentViewController.loadView()

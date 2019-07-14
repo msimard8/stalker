@@ -199,8 +199,7 @@ extension ArticleListViewController: UITableViewDataSource {
                         articleListTableViewCell?.thumbnailImageView.backgroundColor = .clear
                     }
                 }
-            }
-            else {
+            } else {
                 articleListTableViewCell?.setImage(thumbnail: nil)
                 articleListTableViewCell?.thumbnailImageView.backgroundColor = .clear
             }

@@ -48,9 +48,8 @@ class ArticleWebViewController: UIViewController {
 
 }
 
-extension ArticleWebViewController : WKNavigationDelegate {
+extension ArticleWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

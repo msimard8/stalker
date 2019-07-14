@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if Utils.stalkerName == "" {
             window!.rootViewController = SelectStalkerViewController()
-        }
-        else {
+        } else {
             window!.rootViewController = ArticleSplitViewController()
         }
         window!.makeKeyAndVisible()
