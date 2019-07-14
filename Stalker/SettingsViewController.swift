@@ -25,6 +25,11 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func cancelPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            
+        }
+    }
     /*
     // MARK: - Navigation
 
