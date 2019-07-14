@@ -25,6 +25,7 @@
 		8A3318A7227E024300920A97 /* ArticleListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3318A5227E024300920A97 /* ArticleListTableViewCell.xib */; };
 		8A3318AA227E026200920A97 /* ArticleListLoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3318A8227E026200920A97 /* ArticleListLoadMoreTableViewCell.swift */; };
 		8A3318AB227E026200920A97 /* ArticleListLoadMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3318A9227E026200920A97 /* ArticleListLoadMoreTableViewCell.xib */; };
+		8A584F2E22DAA9AE009F99B3 /* ArticleSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A584F2C22DAA9AE009F99B3 /* ArticleSplitViewController.swift */; };
 		8ADDC424227E94A3004FB625 /* ArticleContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDC422227E94A3004FB625 /* ArticleContentViewController.swift */; };
 		8ADDC425227E94A3004FB625 /* ArticleContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADDC423227E94A3004FB625 /* ArticleContentViewController.xib */; };
 		8ADDC429227F5748004FB625 /* ArticleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDC428227F5748004FB625 /* ArticleListHeaderView.swift */; };
@@ -72,6 +73,7 @@
 		8A3318A5227E024300920A97 /* ArticleListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListTableViewCell.xib; sourceTree = "<group>"; };
 		8A3318A8227E026200920A97 /* ArticleListLoadMoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListLoadMoreTableViewCell.swift; sourceTree = "<group>"; };
 		8A3318A9227E026200920A97 /* ArticleListLoadMoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListLoadMoreTableViewCell.xib; sourceTree = "<group>"; };
+		8A584F2C22DAA9AE009F99B3 /* ArticleSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSplitViewController.swift; sourceTree = "<group>"; };
 		8ADDC422227E94A3004FB625 /* ArticleContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentViewController.swift; sourceTree = "<group>"; };
 		8ADDC423227E94A3004FB625 /* ArticleContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleContentViewController.xib; sourceTree = "<group>"; };
 		8ADDC428227F5748004FB625 /* ArticleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListHeaderView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				8A13BA31227BC9F600E8617F /* LaunchScreen.storyboard */,
 				8A13BA34227BC9F600E8617F /* Info.plist */,
 				8A13BA48227BCB1000E8617F /* Podfile */,
+				8A584F2C22DAA9AE009F99B3 /* ArticleSplitViewController.swift */,
 				8A13BA51227BE05B00E8617F /* ArticleListViewController.swift */,
 				8A13BA52227BE05B00E8617F /* ArticleListViewController.xib */,
 				8A3318A4227E024300920A97 /* ArticleListTableViewCell.swift */,
@@ -399,6 +402,7 @@
 				8AF3E9EB2281151D006A8C6C /* SelectStalkerViewController.swift in Sources */,
 				8A13BA53227BE05B00E8617F /* ArticleListViewController.swift in Sources */,
 				8A13BA4B227BD02C00E8617F /* StalkerNetworkService.swift in Sources */,
+				8A584F2E22DAA9AE009F99B3 /* ArticleSplitViewController.swift in Sources */,
 				8A13BA29227BC9F500E8617F /* AppDelegate.swift in Sources */,
 				8AF3E9EE2281183B006A8C6C /* Utils.swift in Sources */,
 				8ADDC429227F5748004FB625 /* ArticleListHeaderView.swift in Sources */,
