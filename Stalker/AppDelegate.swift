@@ -17,22 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-
-        let selectStalkerViewController = SelectStalkerViewController()
-
-        let navigationController = UINavigationController(rootViewController: selectStalkerViewController)
-
-        if Utils.stalkerName != "" {
-            let articleListViewController = ArticleListViewController()
-            navigationController.pushViewController(articleListViewController, animated: false)
-            articleListViewController.view.backgroundColor = UIColor.white
-        }
-
-        navigationController.navigationBar.barTintColor = .black
-    //    UINavigationBar.appearance().backgroundColor = UIColor.white
-        UIBarButtonItem.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        window!.rootViewController = navigationController
+        
+        window!.rootViewController = ArticleSplitViewController()
         window!.makeKeyAndVisible()
         return true
     }
