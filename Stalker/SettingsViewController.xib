@@ -35,12 +35,30 @@
                         <action selector="switchStalkerPressed:" destination="-1" eventType="touchUpInside" id="yNY-I5-xgS"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz6-uG-mRX">
+                    <rect key="frame" x="10" y="147" width="394" height="38"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.046545039429999997" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Cancel"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="cancelPressed:" destination="-1" eventType="touchUpInside" id="wi9-TU-aCg"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3BW-0D-iw9" secondAttribute="trailing" constant="10" id="14m-ig-Ykz"/>
                 <constraint firstItem="3BW-0D-iw9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="AJE-tx-UAq"/>
+                <constraint firstItem="mz6-uG-mRX" firstAttribute="leading" secondItem="3BW-0D-iw9" secondAttribute="leading" id="EOz-md-joE"/>
+                <constraint firstItem="mz6-uG-mRX" firstAttribute="trailing" secondItem="3BW-0D-iw9" secondAttribute="trailing" id="KH5-zu-DXC"/>
                 <constraint firstItem="3BW-0D-iw9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Zlo-sr-fmH"/>
+                <constraint firstItem="mz6-uG-mRX" firstAttribute="top" secondItem="3BW-0D-iw9" secondAttribute="bottom" constant="15" id="yVb-hG-CkS"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
