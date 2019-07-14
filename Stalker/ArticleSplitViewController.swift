@@ -11,8 +11,11 @@ import UIKit
 class ArticleSplitViewController: UISplitViewController {
 
     let articleContentViewController = ArticleContentViewController()
+    var articleContentNavigationController:UINavigationController
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        articleContentNavigationController = UINavigationController(rootViewController: articleContentViewController)
+
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
         let articleListViewController = ArticleListViewController()
@@ -20,6 +23,7 @@ class ArticleSplitViewController: UISplitViewController {
         articleListViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: articleListViewController)
         navigationController.navigationBar.barTintColor = .black
+        articleContentNavigationController.navigationBar.barTintColor = .black
 
         UIBarButtonItem.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -60,6 +64,6 @@ extension ArticleSplitViewController : ArticleListViewControllerDelegate {
     func didSelectArticle(article: NewsArticle) {
         articleContentViewController.loadView()
         articleContentViewController.newsArticle = article
-        self.showDetailViewController(articleContentViewController, sender: self)
+        self.showDetailViewController(articleContentNavigationController, sender: self)
     }
 }
