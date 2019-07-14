@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArticleWebViewController" customModule="Stalker" customModuleProvider="target">
             <connections>
+                <outlet property="eyeView" destination="28c-Da-a14" id="73X-gF-YRZ"/>
+                <outlet property="loadingLabel" destination="SjV-ts-YaV" id="5q1-8a-jMT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="eUL-40-mc8" id="VPZ-bk-Icc"/>
             </connections>
@@ -29,15 +31,35 @@
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                 </wkWebView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28c-Da-a14" customClass="EyeView" customModule="Stalker" customModuleProvider="target">
+                    <rect key="frame" x="103.5" y="349.5" width="207" height="207"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="28c-Da-a14" secondAttribute="height" multiplier="1:1" id="3lT-uO-9K4"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjV-ts-YaV">
+                    <rect key="frame" x="103.5" y="564" width="207" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eUL-40-mc8" secondAttribute="trailing" id="50M-JH-kwA"/>
+                <constraint firstItem="SjV-ts-YaV" firstAttribute="top" secondItem="28c-Da-a14" secondAttribute="bottom" constant="7.5" id="H5J-N6-ztK"/>
+                <constraint firstItem="SjV-ts-YaV" firstAttribute="centerX" secondItem="28c-Da-a14" secondAttribute="centerX" id="NqH-JH-ByJ"/>
                 <constraint firstItem="eUL-40-mc8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="P0B-9L-K8r"/>
                 <constraint firstItem="eUL-40-mc8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QAB-1B-HPQ"/>
+                <constraint firstItem="28c-Da-a14" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="TSL-zc-fv0"/>
+                <constraint firstItem="SjV-ts-YaV" firstAttribute="width" secondItem="28c-Da-a14" secondAttribute="width" id="Vpk-mv-gXE"/>
+                <constraint firstItem="28c-Da-a14" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="aWQ-dk-Gx6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eUL-40-mc8" secondAttribute="bottom" id="ekP-UF-ei0"/>
+                <constraint firstItem="28c-Da-a14" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="fXx-RQ-7c6"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="37.681159420289859" y="34.821428571428569"/>
         </view>
     </objects>
 </document>
