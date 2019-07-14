@@ -22,6 +22,10 @@ class ArticleContentViewController: UIViewController {
 
     var newsArticle: NewsArticle? = nil {
         didSet {
+            if let imageURL = self.newsArticle?.urlToImage {
+                self.imageView.image = ImageCache.shared.retrieveImage(key: imageURL)
+            }
+
             titleLabel.text = newsArticle?.title ?? ""
             sourceLabel.text = newsArticle?.source ?? ""
             authorLabel.text = newsArticle?.author ?? ""
